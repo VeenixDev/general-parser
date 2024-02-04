@@ -1,4 +1,6 @@
 import express from "express";
+import bodyParser from "body-parser";
+
 import mongoose from "mongoose";
 import routes from "./routes";
 require("dotenv").config();
@@ -39,6 +41,7 @@ mongoose
     );
   });
 
+app.use(bodyParser.json());
 app.use(routes);
 
 app.listen(serverPort, serverHost, serverBacklog, () => {
