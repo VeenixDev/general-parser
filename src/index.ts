@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import routes from "./routes";
 require("dotenv").config();
 
 const serverHost = process.env.SERVER_HOST || "localhost";
@@ -37,6 +38,8 @@ mongoose
       err.stack || ""
     );
   });
+
+app.use(routes);
 
 app.listen(serverPort, serverHost, serverBacklog, () => {
   console.log(`Server now listens on http://${serverHost}:${serverPort}`);
